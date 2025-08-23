@@ -159,35 +159,6 @@ ollama run gemma3:1b "Hello, how are you?"
 - [Challenge 1 Setup](gemma/blue/system-prompt-mitigation/challange1/README.md)
 - [Challenge 2 Setup](gemma/blue/system-prompt-mitigation/challange2/README.md)
 
-## Learning Objectives
-
-### **For Non-Technical Participants**
-- **Understand AI security risks** and their business implications
-- **Learn to identify** potential AI vulnerabilities in real-world scenarios
-- **Develop awareness** of AI safety challenges and solutions
-- **Gain insights** into AI security policy and governance
-
-### **For Technical Participants**
-- **Master AI security techniques** and attack methodologies
-- **Learn prompt injection** techniques and defenses
-- **Explore data poisoning** attacks and countermeasures
-- **Develop skills** in AI system defense and hardening
-- **Practice both offensive** and defensive AI security approaches
-
-### **For Mixed Teams**
-- **Bridge technical and business** perspectives on AI security
-- **Collaborate effectively** across different skill levels
-- **Develop comprehensive** understanding of AI security challenges
-- **Create practical solutions** that address both technical and business needs
-
-## Contributing
-
-This is an educational platform. Contributions are welcome for:
-- New challenge scenarios
-- Improved documentation
-- Bug fixes and enhancements
-- Additional defense mechanisms
-
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
