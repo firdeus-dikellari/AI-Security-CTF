@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-600: #2563eb;
+  --primary-700: #1d4ed8;
+}
+
+/* Chat Container */
+.chat-container {
+  min-height: 60vh;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding: 1rem 0;
+}
+
+/* Chat Messages */
+.chat-message {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  max-width: 80%;
+}
+
+.user-message {
+  background-color: var(--primary-600);
+  color: white;
+  margin-left: auto;
+  border-bottom-right-radius: 0.25rem;
+}
+
+.assistant-message {
+  background-color: #f3f4f6;
+  color: #374151;
+  margin-right: auto;
+  border-bottom-left-radius: 0.25rem;
+}
+
+/* Input Container */
+.input-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-top: 1px solid #e5e7eb;
+  padding: 1rem 0;
+  z-index: 10;
+}
+
+/* Typing Indicator */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.typing-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: #9ca3af;
+  border-radius: 50%;
+  animation: typing 1.4s infinite ease-in-out;
+}
+
+@keyframes typing {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-0.5rem);
+    opacity: 1;
+  }
+}
+
+
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .chat-container {
+    min-height: 50vh;
+    max-height: 60vh;
+  }
+  
+  .input-container {
+    padding: 0.75rem 0;
+  }
+  
+  .chat-message {
+    max-width: 90%;
+  }
+}
+
+/* Scrollbar Styling */
+.chat-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-container::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.chat-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.chat-container::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Focus States */
+.focus-ring:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #3b82f6;
+}
+
+ 
