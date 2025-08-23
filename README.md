@@ -134,7 +134,7 @@ ollama run gemma3:1b "Hello, how are you?"
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/firdeus-dikellari/AI-Security-CTF
    cd AI-CTF-RedvsBlue-main
    ```
 
