@@ -1,4 +1,4 @@
-# EuropeHUB AI CTF
+# EuropeHUB AI Security CTF
 
 EuropeHUB AI CTF is an educational platform designed to demonstrate and test the security of Large Language Models (LLMs). It challenges participants to identify and exploit vulnerabilities such as prompt injection and data poisoning in a safe, controlled environment. I developed this platform for the AI Security Workshop I ran in Venice, Italy, this event was organized by YourEuropeHUB.
 
