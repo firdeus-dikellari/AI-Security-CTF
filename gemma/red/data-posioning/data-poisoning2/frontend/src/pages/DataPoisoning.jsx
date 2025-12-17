@@ -15,16 +15,16 @@ const DataPoisoning = () => {
     if (isTraining) {
       interval = setInterval(async () => {
         try {
-          const response = await fetch('http://localhost:5001/api/training-status');
+          const response = await fetch('api/training-status');
           const data = await response.json();
-          
+
           setProgress(data.progress);
           setAccuracy(data.accuracy);
-          
+
           if (data.flag) {
             setFlag(data.flag);
           }
-          
+
           if (!data.is_training) {
             setIsTraining(false);
             clearInterval(interval);
@@ -34,7 +34,7 @@ const DataPoisoning = () => {
         }
       }, 1000);
     }
-    
+
     return () => {
       if (interval) clearInterval(interval);
     };
@@ -68,13 +68,13 @@ const DataPoisoning = () => {
     formData.append('mode', 'challenge'); // Always use challenge mode for Challenge 2
 
     try {
-      const response = await fetch('http://localhost:5001/api/train-model', {
+      const response = await fetch('api/train-model', {
         method: 'POST',
         body: formData,
       });
 
       const data = await response.json();
-      
+
       if (!response.ok) {
         throw new Error(data.error || 'Training failed');
       }
@@ -104,7 +104,7 @@ const DataPoisoning = () => {
         <p className="text-gray-600 mb-4">
           Upload your poisoned CSV dataset to train a spam detection model. Implement a backdoor attack to make specific messages classified as not spam!
         </p>
-        
+
         {/* Flag Display */}
         {flag && (
           <div className="bg-gradient-to-r from-ctf-green to-ctf-blue p-4 rounded-lg text-white">
@@ -125,7 +125,7 @@ const DataPoisoning = () => {
             This is a backdoor attack challenge. You need to poison the training data so that the model learns to associate the specific phrase with legitimate (ham) messages.
           </p>
         </div>
-        
+
         {/* Target Phrase Display */}
         <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
           <p className="text-yellow-800 text-sm">
@@ -140,7 +140,7 @@ const DataPoisoning = () => {
       {/* File Upload Section */}
       <div className="bg-white rounded-lg shadow-md p-6 mb-6">
         <h2 className="text-xl font-semibold mb-4">Upload Your Poisoned Dataset</h2>
-        
+
         {/* Primary File Upload */}
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -156,6 +156,26 @@ const DataPoisoning = () => {
           <p className="text-xs text-gray-500 mt-1">
             Format: tab-separated CSV with "label" (spam/ham) and "message" columns
           </p>
+        </div>
+
+        {/* Dataset Download Section */}
+        <div className="mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
+          <h3 className="text-sm font-semibold text-gray-700 mb-2">Need a starting dataset?</h3>
+          <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
+            <a
+              href="/dataset.csv"
+              download="dataset.csv"
+              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            >
+              <svg className="mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+              </svg>
+              Download Base Dataset (CSV)
+            </a>
+            <p className="text-xs text-gray-500">
+              Reference: <a href="https://archive.ics.uci.edu/static/public/228/sms+spam+collection.zip" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">SMS Spam Collection (UCI ML Repository)</a>
+            </p>
+          </div>
         </div>
 
         {selectedFile && (

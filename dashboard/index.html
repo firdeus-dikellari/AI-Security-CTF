@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Security CTF | EuropeHub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f3f4f6;
+            /* gray-100 */
+            --card-bg: #ffffff;
+            --text-primary: #111827;
+            /* gray-900 */
+            --text-secondary: #4b5563;
+            /* gray-600 */
+            --accent-blue: #2563eb;
+            /* blue-600 */
+            --accent-blue-hover: #1d4ed8;
+            /* blue-700 */
+            --accent-red: #dc2626;
+            /* red-600 */
+            --accent-red-bg: #fee2e2;
+            /* red-100 */
+            --accent-red-text: #991b1b;
+            /* red-800 */
+            --border-color: #e5e7eb;
+            /* gray-200 */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            letter-spacing: -0.025em;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            color: var(--accent-blue);
+        }
+
+        .description {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            background: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        .description p {
+            margin-bottom: 1rem;
+        }
+
+        .description p:last-child {
+            margin-bottom: 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 0.75rem;
+            /* rounded-xl */
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border-color);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.25rem;
+        }
+
+        .badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .badge.red {
+            background-color: var(--accent-red-bg);
+            color: var(--accent-red-text);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .card-cta {
+            display: inline-flex;
+            align-items: center;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--accent-blue);
+            transition: color 0.2s ease;
+        }
+
+        .card:hover .card-cta {
+            color: var(--accent-blue-hover);
+        }
+
+        .card-cta::after {
+            content: '→';
+            margin-left: 0.5rem;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover .card-cta::after {
+            transform: translateX(4px);
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        footer a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px solid currentColor;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--accent-blue);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Security CTF</h1>
+            <p class="subtitle">Learn How AI Can Be Misused - Safely and Responsibly</p>
+
+            <div class="description">
+                <p>This interactive AI Security CTF is part of the AI Security Workshop I held in Venice.</p>
+                <p>It is designed for students, educators, professionals, and curious non-technical participants who
+                    want to understand how modern AI systems can be manipulated, and, more importantly, how to recognize
+                    these risks.</p>
+                <p>No prior experience in cybersecurity or artificial intelligence is required.</p>
+                <p>Participants explore real-world AI security concepts through guided, scenario-based challenges
+                    running in a safe, isolated environment.</p>
+            </div>
+        </header>
+
+        <div class="grid">
+            <!-- Red Team Challenges -->
+            <a href="/red/prompt-injections/" class="card">
+                <div class="card-header">
+                    <span class="badge red">Red Team</span>
+                </div>
+                <h2 class="card-title">Prompt Injections</h2>
+                <p class="card-description">Master the art of manipulating LLM outputs. Bypass safety filters and
+                    extract hidden information through creative prompting strategies.</p>
+                <div class="card-cta">Start Challenge</div>
+            </a>
+
+            <a href="/red/data-poisoning/1/" class="card">
+                <div class="card-header">
+                    <span class="badge red">Red Team</span>
+                </div>
+                <h2 class="card-title">Data Poisoning I</h2>
+                <p class="card-description">Introduction to data poisoning. Learn how malicious data entries can corrupt
+                    model behavior and degrade performance.</p>
+                <div class="card-cta">Start Challenge</div>
+            </a>
+
+            <a href="/red/data-poisoning/2/" class="card">
+                <div class="card-header">
+                    <span class="badge red">Red Team</span>
+                </div>
+                <h2 class="card-title">Data Poisoning II</h2>
+                <p class="card-description">Advanced data poisoning techniques. Execute subtle attacks that trigger only
+                    under specific conditions.</p>
+                <div class="card-cta">Start Challenge</div>
+            </a>
+        </div>
+
+        <footer>
+            Created by <a href="https://www.linkedin.com/in/firdeus-dikellari/" target="_blank"
+                rel="noopener noreferrer">Firdeus Dikellari</a>
+        </footer>
+    </div>
+</body>
+
+</html>

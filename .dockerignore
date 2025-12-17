@@ -1,0 +1,12 @@
+.git
+.env
+__pycache__
+logs
+*.log
+*.pyc
+.DS_Store
+venv/
+tests/
+docker-compose.yml
+# Exclude original docker setup files as we are moving to a single Dockerfile
+docker/
