@@ -1,4 +1,4 @@
-# EuropeHUB AI Security CTF
+# EuropeHUB AI CTF
 
 EuropeHUB AI CTF is an educational platform designed to demonstrate and test the security of Large Language Models (LLMs). It challenges participants to identify and exploit vulnerabilities such as prompt injection and data poisoning in a safe, controlled environment. I developed this platform for the AI Security Workshop I ran in Venice, Italy, this event was organized by YourEuropeHUB.
 
@@ -28,6 +28,21 @@ To stop the CTF, simply press `Ctrl+C` in your terminal or run:
 ```bash
 docker stop <container-id>
 ```
+
+## Build from Source (GitHub)
+
+If you have cloned the repository from GitHub and want to build the image locally:
+
+### 1. Build the Docker Image
+```bash
+docker build -t europehub-ctf .
+```
+
+### 2. Run the Container
+```bash
+docker run -p 8080:8080 europehub-ctf
+```
+*(The initial run will download the AI model, which may take a few minutes)*
 
 ## Features
 
